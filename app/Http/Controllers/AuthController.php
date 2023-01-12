@@ -18,8 +18,8 @@ class AuthController extends BaseController
             $success["token"] = $authUser->createToken("MyAuthApp")->plainTextToken;
             $success["name"] = $authUser->name;
             
-            // return $this->sendResponse($success, "Sikeres belépés");
-            print_r("Sikeres belépés");
+            return $this->sendResponse($success, "Sikeres belépés");
+            // print_r("Sikeres belépés");
         }
 
         else
@@ -49,8 +49,15 @@ class AuthController extends BaseController
         $user = User::create($input);
         $success["name"] = $user->name;
 
-        // return $this->sendResponse($success, "Sikeres regisztráció");
-        print_r("Sikeres reg");
+        return $this->sendResponse($success, "Sikeres regisztráció");
+        // print_r("Sikeres regisztráció");
+    }
+
+    public function logOut(Request $request)
+    {
+        auth("sanctum")->user()->currentAccessToken()->delete();
+
+        return response()->json("Sikeres kijelentkezés");
     }
 
 }
