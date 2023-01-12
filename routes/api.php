@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DragonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post("/register", [AuthController::class, "signUp"]);
 Route::post("/login", [AuthController::class, "signIn"]);
 Route::post("/logout", [AuthController::class, "logOut"]);
+
+Route::post("/store", [DragonController::class, "store"]);
