@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->string("age");
-            $table->foreignId("colors_id");
+            // $table->foreignId("color_id");
+            $table->foreign('color_id')->references('id')->on('colors');
         });
     }
 

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DragonController;
+use App\Http\Controllers\ColorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,13 @@ Route::post("/login", [AuthController::class, "signIn"]);
 Route::post("/logout", [AuthController::class, "logOut"]);
 
 Route::post("/store", [DragonController::class, "store"]);
+Route::get("/dragonlist", [DragonController::class, "index"]);
+Route::get("/showdragon/{id}", [DragonController::class, "show"]);
+
+Route::put("/color/{id}", [ColorController::class, "update"]);
+Route::post("/new-color", [ColorController::class, "store"]);
+Route::get("/colorlist", [ColorController::class, "index"]);
+Route::delete("/color/{id}", [ColorController::class, "destroy"]);
+
+
+
